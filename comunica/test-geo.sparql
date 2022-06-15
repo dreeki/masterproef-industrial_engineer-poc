@@ -1,0 +1,127 @@
+PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
+PREFIX gis: <http://www.opengis.net/rdf#asWKT>
+
+SELECT ?f
+WHERE {
+    my:A my:hasExactGeometry ?aGeom .
+    ?aGeom geo:asWKT ?aWKT .
+    my:C my:hasExactGeometry ?bGeom .
+    ?bGeom geo:asWKT ?bWKT .
+    ?f my:hasExactGeometry ?fGeom .
+    ?fGeom geo:asWKT ?fWKT .
+    FILTER (geof:sfContains(geof:intersection(?aWKT, ?bWKT), ?fWKT) && !sameTerm(?aWKT, ?fWKT) && !sameTerm(?bWKT, ?fWKT))
+}
+
+# linkedGeoData queryen
+# SELECT ?node ?node2
+# WHERE {
+#     # my:A my:hasExactGeometry ?aGeom .
+#     # ?f my:hasExactGeometry ?fGeom .
+#     ?node gis:asWKT ?fWKT .
+#     # ?node2 gis:asWKT ?fWKT2 .
+#     FILTER (geof:sfContains('''Polygon((0 0, 2 0, 2 2, 0 2, 0 0))'''^^geo:wktLiteral, ?fWKT))
+# }
+
+# verwachte resultaten zijn bij de dataset geosparql-example-simplified.jsonld
+
+# Check what wkt elements are inside my:A
+# verwacht resultaat: my:B en my:F
+# SELECT ?f
+# WHERE {
+#     my:A my:hasExactGeometry ?aGeom .
+#     ?aGeom geo:asWKT ?aWKT .
+#     ?f my:hasExactGeometry ?fGeom .
+#     ?fGeom geo:asWKT ?fWKT .
+#     FILTER (geof:sfContains(?aWKT, ?fWKT) && !sameTerm(?aWKT, ?fWKT))
+# }
+
+# Check what polygons, lines or points are in this polygon
+# verwacht resultaat: my:A, my:B, my:C, my:D, my:E en my:F
+# SELECT ?f
+# WHERE {
+#     ?f my:hasExactGeometry ?fGeom .
+#     ?fGeom geo:asWKT ?fWKT .
+#     FILTER (geof:sfContains('''Polygon((0 0, 9 0, 9 9, 0 9, 0 0))'''^^geo:wktLiteral, ?fWKT))
+# }
+
+# Check what polygons or lines go over this point
+# verwacht resultaat: my:A en my:D
+# SELECT ?f
+# WHERE {
+#     ?f my:hasExactGeometry ?fGeom .
+#     ?fGeom geo:asWKT ?fWKT .
+#     FILTER (geof:sfContains(?fWKT, '''Point(5.5 2.5)'''^^geo:wktLiteral))
+# }
+
+# Check what crosses with my:A
+# verwacht resultaat: my:E
+# SELECT ?f
+# WHERE {
+#     my:A my:hasExactGeometry ?aGeom .
+#     ?aGeom geo:asWKT ?aWKT .
+#     ?f my:hasExactGeometry ?fGeom .
+#     ?fGeom geo:asWKT ?fWKT .
+#     FILTER (geof:sfCrosses(?fWKT, ?aWKT))
+# }
+
+# Show all wkt element pairs that have no points in common
+# verwacht resultaat: 
+# my:B en my:C, my:B en my:D, my:B en my:E, my:B en my:F
+# my:C en my:B, my:C en my:D, my:C en my:E, my:C en my:F
+# my:D en my:B, my:D en my:C, my:D en my:E, my:D en my:F
+# my:E en my:B, my:E en my:C, my:E en my:D, my:E en my:F
+# my:F en my:B, my:F en my:C, my:F en my:D, my:F en my:E
+# SELECT ?a ?f
+# WHERE {
+#     ?a my:hasExactGeometry ?aGeom .
+#     ?aGeom geo:asWKT ?aWKT .
+#     ?f my:hasExactGeometry ?fGeom .
+#     ?fGeom geo:asWKT ?fWKT .
+#     FILTER (geof:sfDisjoint(?aWKT, ?fWKT))
+# }
+
+# Show all wkt elements with equal geo meaning as my:A
+# verwacht resultaat: my:A
+# SELECT ?f
+# WHERE {
+#     my:A my:hasExactGeometry ?aGeom .
+#     ?aGeom geo:asWKT ?aWKT .
+#     ?f my:hasExactGeometry ?fGeom .
+#     ?fGeom geo:asWKT ?fWKT .
+#     FILTER (geof:sfEquals(?aWKT, ?fWKT))
+# }
+
+# Show all wkt elements that have points in common with my:D
+# verwacht resultaat: my:A
+# SELECT ?f
+# WHERE {
+#     my:D my:hasExactGeometry ?aGeom .
+#     ?aGeom geo:asWKT ?aWKT .
+#     ?f my:hasExactGeometry ?fGeom .
+#     ?fGeom geo:asWKT ?fWKT .
+#     FILTER (geof:sfIntersects(?aWKT, ?fWKT) && !sameterm(?aWKT, ?fWKT))
+# }
+
+# Check all overlapping wkt elements with my:A
+# verwacht resultaat: my:B, my:D
+# SELECT ?f
+# WHERE {
+#     my:A my:hasExactGeometry ?aGeom .
+#     ?aGeom geo:asWKT ?aWKT .
+#     ?f my:hasExactGeometry ?fGeom .
+#     ?fGeom geo:asWKT ?fWKT .
+#     FILTER (geof:sfOverlaps(?aWKT, ?fWKT) && !sameterm(?aWKT, ?fWKT))
+# }
+
+# Check which geo figures my:B is inside of
+# verwacht resultaat: my:A
+# SELECT ?f
+# WHERE {
+#     my:B my:hasExactGeometry ?aGeom .
+#     ?aGeom geo:asWKT ?aWKT .
+#     ?f my:hasExactGeometry ?fGeom .
+#     ?fGeom geo:asWKT ?fWKT .
+#     FILTER (geof:sfWithin(?aWKT, ?fWKT) && !sameterm(?aWKT, ?fWKT))
+# }

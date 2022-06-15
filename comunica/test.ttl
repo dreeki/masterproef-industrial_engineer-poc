@@ -1,0 +1,52 @@
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix my: <http://example.org/ApplicationSchema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sf: <http://www.opengis.net/ont/sf#> .
+
+# integratie
+my:PlaceOfInterest a rdfs:Class ;
+    rdfs:subClassOf geo:Feature .
+
+my:hasExactGeometry a rdf:Property ;
+    rdfs:subPropertyOf geo:hasDefaultGeometry, geo:hasGeometry .
+
+my:hasPointGeometry a rdf:Property ;
+    rdfs:subPropertyOf geo:hasGeometry .
+
+
+# initialisatie
+my:A a my:PlaceOfInterest ;
+    my:hasExactGeometry my:AExactGeom ;
+    my:hasPointGeometry my:APointGeom .
+
+my:B a my:PlaceOfInterest ;
+    my:hasExactGeometry my:BExactGeom ;
+    my:hasPointGeometry my:BPointGeom .
+
+my:C a my:PlaceOfInterest ;
+    my:hasExactGeometry my:CExactGeom ;
+    my:hasPointGeometry my:CPointGeom .
+
+my:D a my:PlaceOfInterest ;
+    my:hasExactGeometry my:DExactGeom .
+
+
+# Geo locaties
+my:AExactGeom a sf:Polygon ;
+    geo:asWKT "Polygon((0 0, 2 0, 2 4, 0 4, 0 0))"^^geo:wktLiteral .
+my:APointGeom a sf:Point ;
+    geo:asWKT "Point(1 2)"^^geo:wktLiteral .
+
+my:BExactGeom a sf:Polygon ;
+    geo:asWKT "Polygon((2 0, 4 0, 4 4, 2 4, 2 0))"^^geo:wktLiteral .
+my:BPointGeom a sf:Point ;
+    geo:asWKT "Point(3 2)"^^geo:wktLiteral .
+
+my:CExactGeom a sf:Polygon ;
+    geo:asWKT "Polygon((1 1, 3 1, 3 3, 1 3, 1 1))"^^geo:wktLiteral .
+my:CPointGeom a sf:Point ;
+    geo:asWKT "Point(2 2)"^^geo:wktLiteral .
+
+my:DExactGeom a sf:LineString ;
+    geo:asWKT "LineString(2 1, 2 3)"^^geo:wktLiteral .

@@ -1,0 +1,125 @@
+{
+  "name": "sparqlee",
+  "version": "1.3.1",
+  "description": "A simple SPARQL expression evaluator library",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc --watch",
+    "lint": "tslint --project .",
+    "lint-test": "tslint ./test/**/*.ts",
+    "test": "jest",
+    "test-ci": "jest --ci --maxWorkers=4 --coverage",
+    "test-debug": "yarn test-debug-lin",
+    "test-debug-lin": "node --inspect-brk=5858 ./node_modules/.bin/jest",
+    "test-debug-win": "node --inspect-brk=5858 ./node_modules/jest/bin/jest.js",
+    "coveralls-ci": "cat ./coverage/lcov.info | coveralls",
+    "prepare": "yarn run build",
+    "preversion": "yarn test",
+    "version": "manual-git-changelog onversion",
+    "postversion": "git push && git push --tags",
+    "sparqlee": "./dist/bin/Sparqlee.js"
+  },
+  "bin": {
+    "sparqlee": "./dist/bin/Sparqlee.js"
+  },
+  "files": [
+    "/dist/bin",
+    "/dist/lib",
+    "/dist/index.d.ts",
+    "/dist/index.js.map"
+  ],
+  "pre-commit": [
+    "build",
+    "lint",
+    "test"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/comunica/sparqlee.git"
+  },
+  "keywords": [
+    "sparql",
+    "expression",
+    "rdf",
+    "evaluator"
+  ],
+  "author": "Wout Schellaert",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/comunica/sparqlee/issues"
+  },
+  "homepage": "https://github.com/comunica/sparqlee#readme",
+  "devDependencies": {
+    "@types/benchmark": "^1.0.30",
+    "@types/create-hash": "^1.2.0",
+    "@types/jest": "^25.1.0",
+    "@types/uuid": "^7.0.0",
+    "asynciterator": "^2.0.0",
+    "benchmark": "^2.1.4",
+    "coveralls": "^3.0.2",
+    "jest": "^24.3.1",
+    "jest-html-reporter": "^2.4.2",
+    "manual-git-changelog": "^1.0.1",
+    "pre-commit": "^1.2.2",
+    "ts-jest": "^25.1.0",
+    "ts-node": "^8.0.3",
+    "tslint": "^5.8.0",
+    "tslint-eslint-rules": "^5.4.0",
+    "typescript": "^3.0.3"
+  },
+  "dependencies": {
+    "@rdfjs/data-model": "^1.1.0",
+    "@turf/boolean-contains": "^6.0.1",
+    "@turf/boolean-crosses": "^6.0.1",
+    "@turf/boolean-disjoint": "^6.0.2",
+    "@turf/boolean-equal": "^6.0.1",
+    "@turf/boolean-overlap": "^6.0.1",
+    "@turf/boolean-within": "^6.0.1",
+    "@turf/helpers": "^6.1.4",
+    "@turf/intersect": "^6.1.3",
+    "@turf/union": "^6.0.3",
+    "@types/asynciterator": "^1.1.0",
+    "@types/browser-or-node": "^1.2.0",
+    "@types/proj4": "^2.5.0",
+    "@types/rdf-js": "^2.0.4",
+    "browser-or-node": "^1.2.1",
+    "create-hash": "^1.2.0",
+    "decimal.js": "^10.2.0",
+    "immutable": "^3.8.2",
+    "proj4": "^2.6.0",
+    "rdf-string": "^1.1.1",
+    "sparqlalgebrajs": "^2.1.0",
+    "terraformer": "^1.0.10",
+    "terraformer-wkt-parser": "^1.2.1",
+    "uri-js": "^4.2.2",
+    "uuid": "^7.0.0"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "preset": "ts-jest",
+    "testPathIgnorePatterns": [
+      "<rootDir>/dist/"
+    ],
+    "collectCoverageFrom": [
+      "<rootDir>/lib/**"
+    ],
+    "testResultsProcessor": "./node_modules/jest-html-reporter",
+    "moduleFileExtensions": [
+      "ts",
+      "js"
+    ]
+  },
+  "greenkeeper": {
+    "commitMessages": {
+      "initialBadge": "Add Greenkeeper badge",
+      "initialDependencies": "Update dependencies",
+      "initialBranches": "Whitelist greenkeeper branches",
+      "dependencyUpdate": "Update ${dependency} to version ${version}",
+      "devDependencyUpdate": "Update dev ${dependency} to version ${version}",
+      "dependencyPin": "Pin ${dependency} to ${oldVersion}",
+      "devDependencyPin": "Pin ${dependency} to ${oldVersion}"
+    }
+  }
+}

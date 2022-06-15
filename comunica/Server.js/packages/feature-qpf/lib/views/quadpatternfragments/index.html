@@ -1,0 +1,20 @@
+<% /* @license MIT ©2013-2017 Ruben Verborgh, Ghent University - imec */ -%>
+<% inherits(viewPathBase) %>
+
+<% if (!query.features.triplePattern && !query.features.quadPattern) { %>
+<div class="index">
+  <h2>Available datasets</h2>
+  <p>Browse the following datasets as <a href="http://linkeddatafragments.org/in-depth/#tpf">Triple/Quad Pattern Fragments</a>:</p>
+  <dl class="datasets">
+    <% Object.keys(datasources).forEach(function (datasourceName) {
+         const datasource = datasources[datasourceName];
+         if (datasource.hide) return; %>
+        <dt><a href="<%= datasource.url.replace(/#.*/, '') %>"><%= datasource.title %></a></dt>
+        <dd><%= datasource.description || ' ' %></dd>
+    <% }); %>
+  </dl>
+  <p>The current dataset <em class="dataset">index</em> contains metadata about these datasets.</p>
+</div>
+<% } %>
+
+<%- render('fragment') %>

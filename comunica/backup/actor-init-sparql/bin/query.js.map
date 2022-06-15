@@ -1,0 +1,1 @@
+{"version":3,"file":"query.js","sourceRoot":"","sources":["query.ts"],"names":[],"mappings":";;;AACA,iCAAiC;AACjC,qDAA4D;AAC5D,mCAAsB,CAAC,OAAO,CAAC,sBAAsB,CAAC,CAAC,CAAC","sourcesContent":["#!/usr/bin/env node\n// tslint:disable:no-var-requires\nimport {runArgsInProcessStatic} from \"@comunica/runner-cli\";\nrunArgsInProcessStatic(require('../engine-default.js'));\n"]}

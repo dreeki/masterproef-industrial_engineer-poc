@@ -1,0 +1,44 @@
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix my: <http://example.org/ApplicationSchema#> .
+@prefix weg: <http://example.org/weg#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sf: <http://www.opengis.net/ont/sf#> .
+
+# integratie
+my:PlaceOfInterest a rdfs:Class ;
+    rdfs:subClassOf geo:Feature .
+
+my:hasExactGeometry a rdf:Property ;
+    rdfs:subPropertyOf geo:hasDefaultGeometry, geo:hasGeometry .
+
+my:hasPointGeometry a rdf:Property ;
+    rdfs:subPropertyOf geo:hasGeometry .
+
+
+# initialisatie
+weg:E40 a my:PlaceOfInterest, my:Weg ;
+    my:hasExactGeometry weg:E40ExactGeom .
+
+weg:E17 a my:PlaceOfInterest, my:Weg ;
+    my:hasExactGeometry weg:E17ExactGeom .
+
+weg:E19 a my:PlaceOfInterest, my:Weg ;
+    my:hasExactGeometry weg:E19ExactGeom .
+
+weg:E411 a my:PlaceOfInterest, my:Weg ;
+    my:hasExactGeometry weg:E411ExactGeom .
+
+
+# Geo locaties
+weg:E40ExactGeom a sf:LineString ;
+    geo:asWKT "LineString(2.5 14.5, 6.75 12.25, 10 12.5, 13.75 10.5, 18.25 10.5)"^^geo:wktLiteral .
+
+weg:E17ExactGeom a sf:LineString ;
+    geo:asWKT "LineString(3.25 11.5, 9.75 15.25)"^^geo:wktLiteral .
+
+weg:E19ExactGeom a sf:LineString ;
+    geo:asWKT "LineString(5.75 8.5, 8.5 9.5, 8.75 12.25, 9.75 12.5, 9.75 15.25, 11 15.5, 11.25 16.5)"^^geo:wktLiteral .
+
+weg:E411ExactGeom a sf:LineString ;
+    geo:asWKT "LineString(10 12.25, 15.5 3.75)"^^geo:wktLiteral .

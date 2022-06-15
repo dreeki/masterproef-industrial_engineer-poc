@@ -1,0 +1,28 @@
+{ 
+    "sources": [
+        { 
+            "type" : "file", 
+            "value" : "https://gist.githubusercontent.com/dreeki/e48bbe533a4b1191045b3652ff2c9c81/raw/ca8f5ed2856a233443a01491959a8197e540d29b/masterproef-demo-land.ttl" 
+        }, 
+        { 
+            "type" : "file",
+            "value" : "https://gist.githubusercontent.com/dreeki/e48bbe533a4b1191045b3652ff2c9c81/raw/ca8f5ed2856a233443a01491959a8197e540d29b/masterproef-demo-land.ttl" 
+        }, 
+        { 
+            "type" : "file", 
+            "value" : "https://gist.githubusercontent.com/dreeki/e48bbe533a4b1191045b3652ff2c9c81/raw/ca8f5ed2856a233443a01491959a8197e540d29b/masterproef-demo-gewest.ttl" 
+        }, 
+        { 
+            "type" : "file", 
+            "value" : "https://gist.githubusercontent.com/dreeki/e48bbe533a4b1191045b3652ff2c9c81/raw/ca8f5ed2856a233443a01491959a8197e540d29b/masterproef-demo-provincie.ttl" 
+        }, 
+        { 
+            "type" : "file", 
+            "value" : "https://gist.githubusercontent.com/dreeki/e48bbe533a4b1191045b3652ff2c9c81/raw/ca8f5ed2856a233443a01491959a8197e540d29b/masterproef-demo-weg.ttl" 
+        }, 
+        { 
+            "type" : "file", 
+            "value" : "https://gist.githubusercontent.com/dreeki/e48bbe533a4b1191045b3652ff2c9c81/raw/ca8f5ed2856a233443a01491959a8197e540d29b/masterproef-demo-stad.ttl" 
+        }
+    ]
+}

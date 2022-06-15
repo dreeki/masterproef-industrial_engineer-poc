@@ -1,0 +1,45 @@
+{
+  "name": "@ldf/feature-summary",
+  "description": "Linked Data Fragments Server - Memento",
+  "version": "3.0.7",
+  "lsd:module": "https://linkedsoftwaredependencies.org/bundles/npm/@ldf/feature-summary",
+  "lsd:components": "components/components.jsonld",
+  "lsd:contexts": {
+    "https://linkedsoftwaredependencies.org/bundles/npm/@ldf/feature-summary/^3.0.0/components/context.jsonld": "components/context.jsonld"
+  },
+  "lsd:importPaths": {
+    "https://linkedsoftwaredependencies.org/bundles/npm/@ldf/feature-summary/^3.0.0/components/": "components/"
+  },
+  "license": "MIT",
+  "bin": {
+    "generate-summary": "./bin/generate-summary"
+  },
+  "main": "index.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "components",
+    "lib/**/*.js",
+    "lib/**/*.html",
+    "bin/**/*",
+    "index.js"
+  ],
+  "repository": "https://github.com/LinkedDataFragments/Server.js/tree/master/packages/feature-summary",
+  "bugs": {
+    "url": "https://github.com/LinkedDataFragments/Server.js/issues"
+  },
+  "scripts": {
+    "test": "nyc mocha",
+    "lint": "eslint bin/* lib test"
+  },
+  "dependencies": {
+    "n3": "^1.3.5"
+  },
+  "peerDependencies": {
+    "@ldf/core": "^3.0.0"
+  },
+  "devDependencies": {
+    "@ldf/core": "^3.0.7"
+  }
+}

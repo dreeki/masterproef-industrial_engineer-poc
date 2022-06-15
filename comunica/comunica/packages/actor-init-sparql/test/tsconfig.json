@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "lib": [
+      "dom",
+      "es6"
+    ],
+    "noImplicitAny": false,
+    "resolveJsonModule": true
+  }
+}
+

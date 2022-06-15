@@ -1,0 +1,134 @@
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix my: <http://example.org/ApplicationSchema#> .
+@prefix stad: <http://example.org/stad#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sf: <http://www.opengis.net/ont/sf#> .
+
+# integratie
+my:PlaceOfInterest a rdfs:Class ;
+    rdfs:subClassOf geo:Feature .
+
+my:hasExactGeometry a rdf:Property ;
+    rdfs:subPropertyOf geo:hasDefaultGeometry, geo:hasGeometry .
+
+my:hasPointGeometry a rdf:Property ;
+    rdfs:subPropertyOf geo:hasGeometry .
+
+
+# initialisatie
+stad:Brugge a my:PlaceOfInterest, my:Stad ;
+    my:hasExactGeometry stad:BruggeExactGeom .
+
+stad:Kortrijk a my:PlaceOfInterest, my:Stad ;
+    my:hasExactGeometry stad:KortrijkExactGeom .
+
+stad:Eeklo a my:PlaceOfInterest, my:Stad ;
+    my:hasExactGeometry stad:EekloExactGeom .
+
+stad:Gent a my:PlaceOfInterest, my:Stad ;
+    my:hasExactGeometry stad:GentExactGeom .
+
+stad:Aalst a my:PlaceOfInterest, my:Stad ;
+    my:hasExactGeometry stad:AalstExactGeom .
+
+stad:Antwerpen a my:PlaceOfInterest, my:Stad ;
+    my:hasExactGeometry stad:AntwerpenExactGeom .
+
+stad:Turnhout a my:PlaceOfInterest, my:Stad ;
+    my:hasExactGeometry stad:TurnhoutExactGeom .
+
+stad:Brussel a my:PlaceOfInterest, my:Stad ;
+    my:hasExactGeometry stad:BrusselExactGeom .
+
+stad:Leuven a my:PlaceOfInterest, my:Stad ;
+    my:hasExactGeometry stad:LeuvenExactGeom .
+
+stad:Hasselt a my:PlaceOfInterest, my:Stad ;
+    my:hasExactGeometry stad:HasseltExactGeom .
+
+stad:Tongeren a my:PlaceOfInterest, my:Stad ;
+    my:hasExactGeometry stad:TongerenExactGeom .
+
+stad:Bergen a my:PlaceOfInterest, my:Stad ;
+    my:hasExactGeometry stad:BergenExactGeom .
+
+stad:Waver a my:PlaceOfInterest, my:Stad ;
+    my:hasExactGeometry stad:WaverExactGeom .
+
+stad:Namen a my:PlaceOfInterest, my:Stad ;
+    my:hasExactGeometry stad:NamenExactGeom .
+
+stad:Dinant a my:PlaceOfInterest, my:Stad ;
+    my:hasExactGeometry stad:DinantExactGeom .
+
+stad:Luik a my:PlaceOfInterest, my:Stad ;
+    my:hasExactGeometry stad:LuikExactGeom .
+
+stad:Verviers a my:PlaceOfInterest, my:Stad ;
+    my:hasExactGeometry stad:VerviersExactGeom .
+
+stad:Bastogne a my:PlaceOfInterest, my:Stad ;
+    my:hasExactGeometry stad:BastogneExactGeom .
+
+stad:Aarlen a my:PlaceOfInterest, my:Stad ;
+    my:hasExactGeometry stad:AarlenExactGeom .
+
+
+# Geo locaties
+stad:BruggeExactGeom a sf:Point ;
+    geo:asWKT "Point(3.75 14.5)"^^geo:wktLiteral .
+
+stad:KortrijkExactGeom a sf:Point ;
+    geo:asWKT "Point(3.75 11.5)"^^geo:wktLiteral .
+
+stad:EekloExactGeom a sf:Point ;
+    geo:asWKT "Point(5.75 14.5)"^^geo:wktLiteral .
+
+stad:GentExactGeom a sf:Point ;
+    geo:asWKT "Point(6.25 13.25)"^^geo:wktLiteral .
+
+stad:AalstExactGeom a sf:Point ;
+    geo:asWKT "Point(7.25 12)"^^geo:wktLiteral .
+
+stad:AntwerpenExactGeom a sf:Point ;
+    geo:asWKT "Point(9.75 14.5)"^^geo:wktLiteral .
+
+stad:TurnhoutExactGeom a sf:Point ;
+    geo:asWKT "Point(12 15.75)"^^geo:wktLiteral .
+
+stad:BrusselExactGeom a sf:Point ;
+    geo:asWKT "Point(9.5 11.5)"^^geo:wktLiteral .
+
+stad:LeuvenExactGeom a sf:Point ;
+    geo:asWKT "Point(11 12)"^^geo:wktLiteral .
+
+stad:HasseltExactGeom a sf:Point ;
+    geo:asWKT "Point(14.25 12.5)"^^geo:wktLiteral .
+
+stad:TongerenExactGeom a sf:Point ;
+    geo:asWKT "Point(15 11.5)"^^geo:wktLiteral .
+
+stad:BergenExactGeom a sf:Point ;
+    geo:asWKT "Point(7.25 8.5)"^^geo:wktLiteral .
+
+stad:WaverExactGeom a sf:Point ;
+    geo:asWKT "Point(10.5 10.5)"^^geo:wktLiteral .
+
+stad:NamenExactGeom a sf:Point;
+    geo:asWKT "Point(12 8.75)"^^geo:wktLiteral .
+
+stad:DinantExactGeom a sf:Point ;
+    geo:asWKT "Point(12.5 7)"^^geo:wktLiteral .
+
+stad:LuikExactGeom a sf:Point ;
+    geo:asWKT "Point(15.25 10)"^^geo:wktLiteral .
+
+stad:VerviersExactGeom a sf:Point ;
+    geo:asWKT "Point(17.25 9.75)"^^geo:wktLiteral .
+
+stad:BastogneExactGeom a sf:Point ;
+    geo:asWKT "Point(16.25 5.15)"^^geo:wktLiteral .
+
+stad:AarlenExactGeom a sf:Point ;
+    geo:asWKT "Point(16.75 2.5)"^^geo:wktLiteral .

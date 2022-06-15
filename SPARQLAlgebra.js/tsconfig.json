@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es2017",
+    "newLine": "lf",
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "preserveConstEnums": true,
+    "sourceMap": true,
+    "declaration": true
+  },
+  "include": [
+    "index.ts",
+    "bin/**/*.ts",
+    "lib/**/*.ts",
+    "test/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

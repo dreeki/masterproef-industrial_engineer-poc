@@ -1,0 +1,42 @@
+{
+  "@context": [
+    "https://linkedsoftwaredependencies.org/bundles/npm/@ldf/core/^3.0.0/components/context.jsonld",
+    "https://linkedsoftwaredependencies.org/bundles/npm/@ldf/feature-memento/^3.0.0/components/context.jsonld"
+  ],
+  "@id": "npmd:@ldf/feature-memento",
+  "components": [
+    {
+      "@id": "ldffm:ControllerExtension/Memento",
+      "@type": "Class",
+      "extends": "ldfc:ControllerExtension",
+      "requireElement": "controllers.MementoControllerExtension",
+      "comment": "A MementoControllerExtension extends Triple Pattern Fragments responses with Memento headers",
+      "parameters": [
+        {
+          "@id": "ldffm:Controller/Timegate#timegatePath"
+        },
+        {
+          "@id": "ldffm:Controller/Timegate#memento"
+        },
+        {
+          "@id": "ldffm:ControllerExtension/Memento#urlData",
+          "inheritValues": {
+            "@type": "InheritanceValue",
+            "onParameter": "ldfc:Server#urlData",
+            "from": "ldfc:Server"
+          }
+        }
+      ],
+      "constructorArguments": {
+        "fields": [
+          {
+            "@id": "ldffm:Controller/Timegate#timeGatesField"
+          },
+          {
+            "@id": "ldfc:Server#urlDataField"
+          }
+        ]
+      }
+    }
+  ]
+}

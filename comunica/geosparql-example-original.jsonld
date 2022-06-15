@@ -1,0 +1,173 @@
+{
+  "@context": {
+    "geo": "http://www.opengis.net/ont/geosparql#",
+    "my": "http://example.org/ApplicationSchema#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "sf": "http://www.opengis.net/ont/sf#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph": [
+    {
+      "@id": "my:D",
+      "@type": "my:PlaceOfInterest",
+      "my:hasExactGeometry": {
+        "@id": "my:DExactGeom"
+      },
+      "my:hasPointGeometry": {
+        "@id": "my:DPointGeom"
+      }
+    },
+    {
+      "@id": "my:E",
+      "@type": "my:PlaceOfInterest",
+      "my:hasExactGeometry": {
+        "@id": "my:EExactGeom"
+      }
+    },
+    {
+      "@id": "my:F",
+      "@type": "my:PlaceOfInterest",
+      "my:hasExactGeometry": {
+        "@id": "my:FExactGeom"
+      }
+    },
+    {
+      "@id": "my:DPointGeom",
+      "@type": "sf:Point",
+      "geo:asWKT": {
+        "@type": "geo:wktLiteral",
+        "@value": "<http://www.opengis.net/def/crs/OGC/1.3/CRS84> Point(-83.2 34.1)"
+      }
+    },
+    {
+      "@id": "my:APointGeom",
+      "@type": "sf:Point",
+      "geo:asWKT": {
+        "@type": "geo:wktLiteral",
+        "@value": "<http://www.opengis.net/def/crs/OGC/1.3/CRS84> Point(-83.4 34.3)"
+      }
+    },
+    {
+      "@id": "my:A",
+      "@type": "my:PlaceOfInterest",
+      "my:hasExactGeometry": {
+        "@id": "my:AExactGeom"
+      },
+      "my:hasPointGeometry": {
+        "@id": "my:APointGeom"
+      }
+    },
+    {
+      "@id": "my:B",
+      "@type": "my:PlaceOfInterest",
+      "my:hasExactGeometry": {
+        "@id": "my:BExactGeom"
+      },
+      "my:hasPointGeometry": {
+        "@id": "my:BPointGeom"
+      }
+    },
+    {
+      "@id": "my:C",
+      "@type": "my:PlaceOfInterest",
+      "my:hasExactGeometry": {
+        "@id": "my:CExactGeom"
+      },
+      "my:hasPointGeometry": {
+        "@id": "my:CPointGeom"
+      }
+    },
+    {
+      "@id": "my:DExactGeom",
+      "@type": "sf:Polygon",
+      "geo:asWKT": {
+        "@type": "geo:wktLiteral",
+        "@value": "<http://www.opengis.net/def/crs/OGC/1.3/CRS84> Polygon((-83.3 34.0, -83.1 34.0, -83.1 34.2, -83.3 34.2, -83.3 34.0))"
+      }
+    },
+    {
+      "@id": "my:hasExactGeometry",
+      "@type": "rdf:Property",
+      "rdfs:subPropertyOf": [
+        {
+          "@id": "geo:hasDefaultGeometry"
+        },
+        {
+          "@id": "geo:hasGeometry"
+        }
+      ]
+    },
+    {
+      "@id": "my:FExactGeom",
+      "@type": "sf:Point",
+      "geo:asWKT": {
+        "@type": "geo:wktLiteral",
+        "@value": "<http://www.opengis.net/def/crs/OGC/1.3/CRS84> Point(-83.4 34.4)"
+      }
+    },
+    {
+      "@id": "my:PlaceOfInterest",
+      "@type": "rdfs:Class",
+      "rdfs:subClassOf": {
+        "@id": "geo:Feature"
+      }
+    },
+    {
+      "@id": "my:CPointGeom",
+      "@type": "sf:Point",
+      "geo:asWKT": {
+        "@type": "geo:wktLiteral",
+        "@value": "<http://www.opengis.net/def/crs/OGC/1.3/CRS84> Point(-83.1 34.4)"
+      }
+    },
+    {
+      "@id": "my:EExactGeom",
+      "@type": "sf:LineString",
+      "geo:asWKT": {
+        "@type": "geo:wktLiteral",
+        "@value": "<http://www.opengis.net/def/crs/OGC/1.3/CRS84> LineString(-83.4 34.0, -83.3 34.3)"
+      }
+    },
+    {
+      "@id": "my:hasPointGeometry",
+      "@type": "rdf:Property",
+      "rdfs:subPropertyOf": {
+        "@id": "geo:hasGeometry"
+      }
+    },
+    {
+      "@id": "my:AExactGeom",
+      "@type": "sf:Polygon",
+      "geo:asWKT": {
+        "@type": "geo:wktLiteral",
+        "@value": "<http://www.opengis.net/def/crs/OGC/1.3/CRS84> Polygon((-83.6 34.1, -83.2 34.1, -83.2 34.5, -83.6 34.5, -83.6 34.1))"
+      }
+    },
+    {
+      "@id": "my:CExactGeom",
+      "@type": "sf:Polygon",
+      "geo:asWKT": {
+        "@type": "geo:wktLiteral",
+        "@value": "<http://www.opengis.net/def/crs/OGC/1.3/CRS84> Polygon((-83.2 34.3, -83.0 34.3, -83.0 34.5, -83.2 34.5, -83.2 34.3))"
+      }
+    },
+    {
+      "@id": "my:BExactGeom",
+      "@type": "sf:Polygon",
+      "geo:asWKT": {
+        "@type": "geo:wktLiteral",
+        "@value": "<http://www.opengis.net/def/crs/OGC/1.3/CRS84> Polygon((-83.6 34.1, -83.4 34.1, -83.4 34.3, -83.6 34.3, -83.6 34.1))"
+      }
+    },
+    {
+      "@id": "my:BPointGeom",
+      "@type": "sf:Point",
+      "geo:asWKT": {
+        "@type": "geo:wktLiteral",
+        "@value": "<http://www.opengis.net/def/crs/OGC/1.3/CRS84> Point(-83.5 34.2)"
+      }
+    }
+  ]
+}

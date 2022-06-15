@@ -1,0 +1,37 @@
+{
+  "@context": [
+    "https://linkedsoftwaredependencies.org/bundles/npm/@ldf/core/^3.0.0/components/context.jsonld",
+    "https://linkedsoftwaredependencies.org/bundles/npm/@ldf/feature-memento/^3.0.0/components/context.jsonld"
+  ],
+  "@id": "npmd:@ldf/feature-memento",
+  "components": [
+    {
+      "@id": "ldffm:View/Html/Qpf/Memento",
+      "@type": "Class",
+      "extends": "ldfc:View/Html",
+      "requireElement": "views.memento.QuadPatternFragmentsHtmlView-Memento",
+      "comment": "A MementoHtmlViewExtension extends the Quad Pattern Fragments HTML view with Memento details",
+      "parameters": [
+        {
+          "@id": "ldffm:Controller/Timegate#timegatePath"
+        },
+        {
+          "@id": "ldffm:Controller/Timegate#memento"
+        }
+      ],
+      "constructorArguments": [
+        {
+          "extends": "ldfc:View/Html#constructorArgumentsObject",
+          "fields": [
+            {
+              "@id": "ldffm:Controller/Timegate#timeGatesField"
+            },
+            {
+              "@id": "ldfc:Server#routerField"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

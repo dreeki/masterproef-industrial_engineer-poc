@@ -1,0 +1,31 @@
+{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "module": "CommonJS",
+    "lib": [
+      "es2017"
+    ],
+    "target": "es2017",
+    "noImplicitAny": true,
+    "removeComments": false,
+    "preserveConstEnums": true,
+    "sourceMap": true,
+    "inlineSources": true,
+    "declaration": true,
+    "importHelpers": false,
+    "outDir": "./dist",
+    "noImplicitThis": true
+  },
+  "include": [
+    "index.ts",
+    "lib/**/*.ts",
+    "bin/**/*.ts",
+    "util/**/*.ts", 
+    "typings/**/*.d.ts",
+  ],
+  "exclude": [
+    "**/dist",
+    "**/node_modules",
+    "**/test",
+  ]
+}

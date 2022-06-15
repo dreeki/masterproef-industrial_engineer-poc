@@ -1,0 +1,110 @@
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix my: <http://example.org/ApplicationSchema#> .
+@prefix prov: <http://example.org/provincie#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sf: <http://www.opengis.net/ont/sf#> .
+
+# integratie
+my:PlaceOfInterest a rdfs:Class ;
+    rdfs:subClassOf geo:Feature .
+
+my:hasExactGeometry a rdf:Property ;
+    rdfs:subPropertyOf geo:hasDefaultGeometry, geo:hasGeometry .
+
+my:hasPointGeometry a rdf:Property ;
+    rdfs:subPropertyOf geo:hasGeometry .
+
+
+# initialisatie
+prov:WestVlaanderen a my:PlaceOfInterest, my:Provincie ;
+    my:hasExactGeometry prov:WestVlaanderenExactGeom ;
+    my:hasPointGeometry prov:WestVlaanderenPointGeom .
+
+prov:OostVlaanderen a my:PlaceOfInterest, my:Provincie ;
+    my:hasExactGeometry prov:OostVlaanderenExactGeom ;
+    my:hasPointGeometry prov:OostVlaanderenPointGeom .
+
+prov:Antwerpen a my:PlaceOfInterest, my:Provincie ;
+    my:hasExactGeometry prov:AntwerpenExactGeom ;
+    my:hasPointGeometry prov:AntwerpenPointGeom .
+
+prov:VlaamsBrabant a my:PlaceOfInterest, my:Provincie ;
+    my:hasExactGeometry prov:VlaamsBrabantExactGeom ;
+    my:hasPointGeometry prov:VlaamsBrabantPointGeom .
+
+prov:Limburg a my:PlaceOfInterest, my:Provincie ;
+    my:hasExactGeometry prov:LimburgExactGeom ;
+    my:hasPointGeometry prov:LimburgPointGeom .
+
+prov:Henegouwen a my:PlaceOfInterest, my:Provincie ;
+    my:hasExactGeometry prov:HenegouwenExactGeom ;
+    my:hasPointGeometry prov:HenegouwenPointGeom .
+
+prov:WaalsBrabant a my:PlaceOfInterest, my:Provincie ;
+    my:hasExactGeometry prov:WaalsBrabantExactGeom ;
+    my:hasPointGeometry prov:WaalsBrabantPointGeom .
+
+prov:Namen a my:PlaceOfInterest, my:Provincie ;
+    my:hasExactGeometry prov:NamenExactGeom ;
+    my:hasPointGeometry prov:NamenPointGeom .
+
+prov:Luik a my:PlaceOfInterest, my:Provincie ;
+    my:hasExactGeometry prov:LuikExactGeom ;
+    my:hasPointGeometry prov:LuikPointGeom .
+
+prov:Luxemburg a my:PlaceOfInterest, my:Provincie ;
+    my:hasExactGeometry prov:LuxemburgExactGeom ;
+    my:hasPointGeometry prov:LuxemburgPointGeom .
+
+
+# Geo locaties
+prov:WestVlaanderenExactGeom a sf:Polygon ;
+    geo:asWKT "Polygon((0.5 13.75, 0.75 11.5, 2 10.5, 3.25 11.25, 3.5 11, 5 11, 4.5 15, 4.5 15.75, 2.5 15, 0.5 13.75))"^^geo:wktLiteral .
+prov:WestVlaanderenPointGeom a sf:Point ;
+    geo:asWKT "Point(3.75 14.5)"^^geo:wktLiteral .
+
+prov:OostVlaanderenExactGeom a sf:Polygon ;
+    geo:asWKT "Polygon((5 11, 7.5 11, 8.75 13, 8.5 13.75, 9.25 14, 8.75 15.5, 6.5 14.5, 6.5 15, 5.75 15.25, 4.5 15, 5 11))"^^geo:wktLiteral .
+prov:OostVlaanderenPointGeom a sf:Point ;
+    geo:asWKT "Point(6.25 13.25)"^^geo:wktLiteral .
+
+prov:AntwerpenExactGeom a sf:Polygon ;
+    geo:asWKT "Polygon((8.75 13, 12.5 13.25, 13.75 14, 13.75 15, 13 15.75, 13 16.75, 12.25 16, 11.75 16.25, 11.75 16.75, 11.25 16.75, 10.75 16.25, 10.25 16.25, 10 16.75, 8.75 15.5, 9.25 14, 8.5 13.75, 8.75 13))"^^geo:wktLiteral .
+prov:AntwerpenPointGeom a sf:Point ;
+    geo:asWKT "Point(9.75 14.5)"^^geo:wktLiteral .
+
+prov:VlaamsBrabantExactGeom a sf:Polygon ;
+    geo:asWKT "Polygon((7 11, 7 10.5, 9 10.5, 11.25 11.5, 13 10.5, 13.5 12.25, 12.5 13.25, 8.75 13, 7.5 11, 7 11), (9 11.25, 9 12, 9.75 12.25, 10 11.5, 9.5 11, 9 11.25))"^^geo:wktLiteral .
+prov:VlaamsBrabantPointGeom a sf:Point ;
+    geo:asWKT "Point(11 12)"^^geo:wktLiteral .
+
+prov:LimburgExactGeom a sf:Polygon ;
+    geo:asWKT "Polygon((13 10.5, 15 10.75, 15.75 11.5, 16.75 14.25, 15.25 15, 13.75 15, 13.75 14, 12.5 13.25, 13.5 12.25, 13 10.5))"^^geo:wktLiteral .
+prov:LimburgPointGeom a sf:Point ;
+    geo:asWKT "Point(14.25 12.5)"^^geo:wktLiteral .
+
+prov:HenegouwenExactGeom a sf:Polygon ;
+    geo:asWKT "Polygon((3.5 11, 3.75 10.75, 3.75 9.5, 4.25 9, 5.75 8.75, 6 7.5, 7.5 7.75, 8.25 7.5, 8.25 4.75, 10 4.5, 9.25 7.25, 10.5 7.5, 10.25 9.25, 8 10, 8 10.5, 7 10.5, 7 11, 3.5 11))"^^geo:wktLiteral .
+prov:HenegouwenPointGeom a sf:Point ;
+    geo:asWKT "Point(7.25 8.5)"^^geo:wktLiteral .
+
+prov:WaalsBrabantExactGeom a sf:Polygon ;
+    geo:asWKT "Polygon((8 10.5, 8 10, 10.25 9.25, 12.5 10.25, 12.5 10.75, 11.25 11.5, 9 10.5, 8 10.5))"^^geo:wktLiteral .
+prov:WaalsBrabantPointGeom a sf:Point ;
+    geo:asWKT "Point(10.5 10.5)"^^geo:wktLiteral .
+
+prov:NamenExactGeom a sf:Polygon ;
+    geo:asWKT "Polygon((10 4.5, 11 5, 11.5 6.25, 12 6.25, 11.75 3.5, 12.5 3.5, 13 4.5, 13 5, 12.75 5, 12.75 5.75, 14 5.75, 13.75 6.75, 14.5 7.25, 14.5 8, 14.25 8, 12.5 9.75, 12.5 10.25, 10.25 9.25, 10.5 7.5, 9.25 7.25, 10 4.5))"^^geo:wktLiteral .
+prov:NamenPointGeom a sf:Point ;
+    geo:asWKT "Point(12 8.75)"^^geo:wktLiteral .
+
+prov:LuikExactGeom a sf:Polygon ;
+    geo:asWKT "Polygon((12.5 10.75, 12.5 9.75, 14.25 8, 15 8.25, 16.25 7.75, 16.25 7.25, 17 7.25, 16.75 7.75, 17.75 7.5, 17.75 6.25, 18.25 6.25, 19.5 7.5, 19.5 8.75, 18.25 9.5, 19 10, 18 11, 15.75 11.5, 15 10.75, 13 10.5, 12.5 10.75))"^^geo:wktLiteral .
+prov:LuikPointGeom a sf:Point ;
+    geo:asWKT "Point(15.25 10)"^^geo:wktLiteral .
+
+prov:LuxemburgExactGeom a sf:Polygon ;
+    geo:asWKT "Polygon((12.5 3.5, 14.75 1.75, 15 1, 17 1.75, 17.25 2.5, 16.5 3.5, 16.5 4, 17.5 6.25, 17.75 6.25, 17.75 7.5, 16.75 7.75, 17 7.25, 16.25 7.25, 16.25 7.75, 15 8.25, 14.25 8, 14.5 8, 14.5 7.25, 13.75 6.75, 14 5.75, 12.75 5.75, 12.75 5, 13 5, 13 4.5, 12.5 3.5))"^^geo:wktLiteral .
+prov:LuxemburgPointGeom a sf:Point ;
+    geo:asWKT "Point(16.75 2.5)"^^geo:wktLiteral .

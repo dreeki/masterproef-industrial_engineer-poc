@@ -1,0 +1,13 @@
+sudo: required
+language: node_js
+node_js:
+ - "8"
+ - "10"
+ - "node"
+install: yarn install --pure-lockfile
+script:
+  - npm run test
+cache:
+  npm: true
+  directories:
+    - node_modules

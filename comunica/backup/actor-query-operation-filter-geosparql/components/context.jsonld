@@ -1,0 +1,12 @@
+{
+  "@context": [
+    "https://linkedsoftwaredependencies.org/bundles/npm/@comunica/core/^1.0.0/components/context.jsonld",
+    {
+      "npmd": "https://linkedsoftwaredependencies.org/bundles/npm/",
+      "caqog": "npmd:@comunica/actor-query-operation-filter-geosparql/",
+      "files-caqog": "caqog:^1.0.0/",
+
+      "ActorQueryOperationFilterGeosparql": "caqog:Actor/QueryOperation/FilterGeosparql"
+    }
+  ]
+}

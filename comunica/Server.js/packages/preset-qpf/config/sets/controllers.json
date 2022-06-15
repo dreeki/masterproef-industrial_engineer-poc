@@ -1,0 +1,27 @@
+{
+  "@context": [
+    "https://linkedsoftwaredependencies.org/bundles/npm/@ldf/preset-qpf/^3.0.0/components/context.jsonld",
+    "https://linkedsoftwaredependencies.org/bundles/npm/@ldf/core/^3.0.0/components/context.jsonld",
+    "https://linkedsoftwaredependencies.org/bundles/npm/@ldf/feature-qpf/^3.0.0/components/context.jsonld"
+  ],
+  "@id": "urn:ldf-server:my",
+
+  "controllers": [
+    {
+      "@id": "preset-qpf:sets/controllers.json#myQuadPatternFragmentsController",
+      "@type": "QuadPatternFragmentsController"
+    },
+    {
+      "@id": "preset-qpf:sets/controllers.json#myAssetsController",
+      "@type": "ldfc:Controller/Assets"
+    },
+    {
+      "@id": "preset-qpf:sets/controllers.json#myDereferenceController",
+      "@type": "ldfc:Controller/Dereference"
+    },
+    {
+      "@id": "preset-qpf:sets/controllers.json#myNotFoundController",
+      "@type": "ldfc:Controller/NotFound"
+    }
+  ]
+}

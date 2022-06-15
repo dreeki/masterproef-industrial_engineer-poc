@@ -1,0 +1,157 @@
+<% /* @license MIT ©2013-2017 Ruben Verborgh and Ruben Taelman, Ghent University - imec */ -%>
+<%
+  const sd = 'http://www.w3.org/ns/sparql-service-description#';
+
+  const patternKind = datasource.supportsQuads ? 'triple/quad' : 'triple';
+  const components = !datasource.supportsQuads ? ['subject', 'predicate', 'object']
+                                             : ['subject', 'predicate', 'object', 'graph'];
+%>
+<div resource="<%= datasource.url %>" typeof="void:datasource hydra:Collection">
+<h2><a href="<%= datasource.url %>"><%= capitalizeFirst(datasource.title) %></a></h2>
+
+<form action="?" method="GET" property="hydra:search" resource="#pattern">
+  <fieldset resource="#pattern">
+  <%- extensions.FormBefore %>
+  <div class="searchForm">
+    <legend>Search <%= datasource.title %> by <%= patternKind %> pattern</legend>
+    <span property="hydra:template" content="<%= datasource.templateUrl %>" lang=""></span>
+    <span property="hydra:variableRepresentation" resource="hydra:ExplicitRepresentation"></span>
+    <ul>
+<% components.forEach(function (component, i) { -%>
+      <li property="hydra:mapping" resource="#<%= component %>">
+        <label for="<%= component %>"
+               about="#<%= component %>" property="hydra:variable" lang=""><%= component %></label>
+       <input class="uri" id="<%= component %>" name="<%= component %>"
+              about="#<%= component %>" property="hydra:property" resource="<%= i === 3 ? sd : 'rdf:' %><%= component %>" <%
+           %> value="<%= query[component] && RdfString.termToString(query[component]) ||
+                         // The empty string as graph means the default graph
+                         (i === 3 && query.graph === '' ? 'urn:ldf:defaultGraph' : '') %>" />
+      </li>
+<% }); -%>
+    </ul>
+  </div>
+  <%- extensions.FormAfter %>
+  </fieldset>
+  <p>
+    <input type="submit" value="Search" />
+  </p>
+</form>
+</div>
+
+<%- extensions.Before %>
+
+<h3>Matches in <%= datasource.title %> for <em class="pattern"><%= query.patternString %></em></h3>
+<%
+  const totalEstimate = metadata.totalCount,
+      offset = query.offset || 0, limit = query.limit || quads.length,
+      start = offset + 1, end = offset + quads.length,
+      hasPrev = offset > 0, hasNext = totalEstimate > end,
+      subject = query.subject, predicate = query.predicate, object = query.object, graph = query.graph;
+%>
+<div class="counts">
+<% if (quads.length) { %>
+  Showing items <%= formatNumber(start) %> to <%= formatNumber(end) %> of
+  <%= totalEstimate === end ? '' : '±'
+  %><span property="void:triples hydra:totalItems" datatype="xsd:integer" content="<%= totalEstimate %>"><%=
+    formatNumber(totalEstimate)
+  %></span>
+  with <span property="hydra:itemsPerPage" datatype="xsd:integer" content="<%= limit %>"><%=
+    formatNumber(limit)
+  %></span> items per page.
+  <% pageLinks(fragment); -%>
+<% } else { %>
+  <p>
+    <%= capitalizeFirst(datasource.title) %> has
+    <span property="void:triples hydra:totalItems" datatype="xsd:integer" content="0">
+      no <% if (totalEstimate > 0) { %>more<% } %>
+    </span>
+    matches for this pattern.
+  </p>
+<% } %>
+</div>
+<ul class="quads">
+<% quads.forEach(function (quad) {
+    const subject = quad.subject.value, predicate = quad.predicate.value, object = quad.object.value, graph = quad.graph.value, urlAppendix = quad.urlAppendix ? quad.urlAppendix : '';
+-%>
+  <li>
+    <%- extensions.QuadBefore({ quad: quad }) %>
+    <a href="?subject=<%= encodeURIComponent(subject) + urlAppendix %>"><%
+      %><abbr title="<%= subject %>"><%= shorten(subject) %></abbr><%
+      %></a>
+    <a href="?predicate=<%= encodeURIComponent(predicate) + urlAppendix %>"><%
+      %><abbr title="<%= predicate %>"><%= shorten(predicate) %></abbr><%
+      %></a>
+    <% if (quad.object.termType !== 'Literal') { -%>
+    <a href="?object=<%= encodeURIComponent(object) + urlAppendix %>" resource="<%= subject %>"><%
+      %><abbr title="<%= object %>" property="<%= predicate %>" resource="<%= object %>"><%=
+        shorten(object)
+        %></abbr></a><%
+    } else {
+    const type = quad.object.datatype,
+        language = quad.object.language
+    -%>
+    <a href="?object=<%= encodeURIComponent(RdfString.termToString(quad.object)) + urlAppendix %>" resource="<%= subject %>"><%
+      %>"<span property="<%= predicate %>" <%
+      if (!language) { %>datatype="<%= type.value %>"<% }
+      else { %>lang="<%= language %>" xml:lang="<%= language %>"<% } %>><%=
+      object
+      %></span>"</a><%
+    }
+    if (datasource.supportsQuads) { -%>
+    <a href="?graph=<%= encodeURIComponent(graph || 'urn:ldf:defaultGraph') + urlAppendix %>" class="graph"><%
+      %><abbr title="<%= graph %>"><%= graph ? shorten(graph) : '@default' %></abbr><%
+      %></a><% }
+    -%>.
+    <%- extensions.QuadAfter({ quad: quad }) %>
+  </li>
+<% }); -%>
+</ul>
+
+<% pageLinks(fragment); -%>
+
+<%
+function capitalizeFirst(string) {
+  return string && !/[A-Z]/.test(string) ? string[0].toUpperCase() + string.slice(1) : string;
+}
+
+function shorten(entity) {
+  return entity.match(/([^\/#]*)[\/#]?$/)[1] || entity;
+}
+
+function formatNumber(number) {
+  return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+function pageLinks(fragment) {
+  if (!hasPrev && !hasNext) return;
+-%>
+  <ul class="links">
+    <% if (hasPrev) { -%>
+    <li><a href="<%= fragment.firstPageUrl %>" rel="first" property="hydra:first">first</a></li>
+    <li><a href="<%= fragment.previousPageUrl %>" rel="prev" property="hydra:previous">previous</a></li>
+    <% } -%>
+    <% if (hasNext) { -%>
+    <li><a href="<%= fragment.nextPageUrl %>" rel="next" property="hydra:next">next</a></li>
+    <% } -%>
+  </ul>
+<%
+}
+-%>
+
+<%- extensions.After %>
+
+<% if (datasource.description || datasource.copyright ||
+       datasource.license || datasource.licenseUrl) { %>
+<aside id="about">
+  <h3>About <%= datasource.title %></h3>
+  <ul>
+    <li><a href="<%= datasource.homepage || datasource.url %>" target="_blank"><%= datasource.title %></a><%
+        if (datasource.description) { %> – <%= datasource.description %><% } %></li>
+    <% if (datasource.copyright) { %><li><%= datasource.copyright %></li><% } %>
+    <% if (datasource.license || datasource.licenseUrl)
+    { %><li><a href="<%= datasource.licenseUrl || '#' %>" target="_blank"><%=
+              datasource.license || datasource.licenseUrl
+          %></a></li><% } %>
+  </ul>
+</aside>
+<% } %>

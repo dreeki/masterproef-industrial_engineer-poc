@@ -1,0 +1,43 @@
+{
+  "name": "@ldf/feature-webid",
+  "description": "Linked Data Fragments Server - WebID",
+  "version": "3.0.7",
+  "lsd:module": "https://linkedsoftwaredependencies.org/bundles/npm/@ldf/feature-webid",
+  "lsd:components": "components/components.jsonld",
+  "lsd:contexts": {
+    "https://linkedsoftwaredependencies.org/bundles/npm/@ldf/feature-webid/^3.0.0/components/context.jsonld": "components/context.jsonld"
+  },
+  "lsd:importPaths": {
+    "https://linkedsoftwaredependencies.org/bundles/npm/@ldf/feature-webid/^3.0.0/components/": "components/"
+  },
+  "license": "MIT",
+  "main": "index.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "components",
+    "lib/**/*.js",
+    "lib/**/*.html",
+    "index.js"
+  ],
+  "repository": "https://github.com/LinkedDataFragments/Server.js/tree/master/packages/feature-webid",
+  "bugs": {
+    "url": "https://github.com/LinkedDataFragments/Server.js/issues"
+  },
+  "scripts": {
+    "test": "nyc mocha",
+    "lint": "eslint bin/* lib test"
+  },
+  "dependencies": {
+    "lru-cache": "^5.1.1",
+    "n3": "^1.3.5",
+    "parse-cache-control": "^1.0.1"
+  },
+  "peerDependencies": {
+    "@ldf/core": "^3.0.0"
+  },
+  "devDependencies": {
+    "@ldf/core": "^3.0.7"
+  }
+}

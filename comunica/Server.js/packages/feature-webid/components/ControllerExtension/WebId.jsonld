@@ -1,0 +1,33 @@
+{
+  "@context": [
+    "https://linkedsoftwaredependencies.org/bundles/npm/@ldf/core/^3.0.0/components/context.jsonld",
+    "https://linkedsoftwaredependencies.org/bundles/npm/@ldf/feature-webid/^3.0.0/components/context.jsonld"
+  ],
+  "@id": "npmd:@ldf/feature-webid",
+  "components": [
+    {
+      "@id": "ldffw:ControllerExtension/WebId",
+      "@type": "Class",
+      "extends": "ldfc:ControllerExtension",
+      "requireElement": "controllers.WebIDControllerExtension",
+      "comment": "A WebIDControllerExtension extends Triple Pattern Fragments responses with WebID authentication",
+      "parameters": [
+        {
+          "@id": "ldffw:ControllerExtension/WebId#urlData",
+          "inheritValues": {
+            "@type": "InheritanceValue",
+            "onParameter": "ldfc:Server#urlData",
+            "from": "ldfc:Server"
+          }
+        }
+      ],
+      "constructorArguments": {
+        "fields": [
+          {
+            "@id": "ldfc:Server#urlDataField"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "@context": "https://linkedsoftwaredependencies.org/bundles/npm/@ldf/server/^3.0.0/components/context.jsonld",
+  "@id": "urn:ldf-server:my",
+  "import": "preset-qpf:config-defaults.json",
+
+  "datasources": [
+    {
+      "@id": "ex:myHdtDatasource",
+      "@type": "HdtDatasource",
+      "datasourceTitle": "My HDT file",
+      "description": "My dataset with an HDT back-end",
+      "datasourcePath": "myhdt",
+      "hdtFile": "path/to/file.hdt"
+    }
+  ]
+}

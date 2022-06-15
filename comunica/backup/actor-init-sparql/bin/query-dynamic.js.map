@@ -1,0 +1,1 @@
+{"version":3,"file":"query-dynamic.js","sourceRoot":"","sources":["query-dynamic.ts"],"names":[],"mappings":";;;AACA,qDAAsD;AACtD,6BAAgB,CAAC,SAAS,GAAG,MAAM,EAAE,SAAS,GAAG,gCAAgC,CAAC,CAAC","sourcesContent":["#!/usr/bin/env node\nimport {runArgsInProcess} from \"@comunica/runner-cli\";\nrunArgsInProcess(__dirname + '/../', __dirname + '/../config/config-default.json');\n"]}

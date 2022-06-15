@@ -1,0 +1,25 @@
+PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX land: <http://example.org/Land#>
+PREFIX gewest: <http://example.org/gewest#>
+PREFIX prov: <http://example.org/provincie#>
+PREFIX weg: <http://example.org/weg#>
+PREFIX stad: <http://example.org/stad#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
+
+
+SELECT ?f
+WHERE {
+    land:België my:hasExactGeometry ?aGeom .
+    ?aGeom geo:asWKT ?aWKT .
+    {
+        ?f a my:Provincie .
+    }
+        UNION
+    {
+        ?f a my:Weg .
+    }
+    ?f my:hasExactGeometry ?fGeom .
+    ?fGeom geo:asWKT ?fWKT .
+    FILTER (geof:sfContains(?aWKT, ?fWKT) && !sameterm(?aWKT, ?fWKT))
+}

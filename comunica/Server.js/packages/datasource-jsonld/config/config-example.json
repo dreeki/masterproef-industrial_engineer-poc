@@ -1,0 +1,16 @@
+{
+  "@context": "https://linkedsoftwaredependencies.org/bundles/npm/@ldf/server/^3.0.0/components/context.jsonld",
+  "@id": "urn:ldf-server:my",
+  "import": "preset-qpf:config-defaults.json",
+
+  "datasources": [
+    {
+      "@id": "ex:myJsonLdDatasource",
+      "@type": "JsonLdDatasource",
+      "datasourceTitle": "My JSON-LD file",
+      "description": "My dataset with a JSON-LD back-end",
+      "datasourcePath": "myjsonld",
+      "file": "path/to/file.jsonld"
+    }
+  ]
+}

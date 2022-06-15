@@ -1,0 +1,16 @@
+{
+  "@context": [
+    "https://linkedsoftwaredependencies.org/bundles/npm/componentsjs/^3.0.0/components/context.jsonld",
+    {
+      "npmd": "https://linkedsoftwaredependencies.org/bundles/npm/",
+      "ldfdc": "npmd:@ldf/datasource-composite/",
+      "files-ldfdc": "ldfdc:^3.0.0/",
+
+      "CompositeDatasource": "ldfdc:Datasource/Composite",
+      "compose": {
+        "@id": "ldfdc:Datasource/Composite#compose",
+        "@type": "@id"
+      }
+    }
+  ]
+}

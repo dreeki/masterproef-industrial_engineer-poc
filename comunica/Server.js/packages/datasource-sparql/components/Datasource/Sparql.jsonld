@@ -1,0 +1,44 @@
+{
+  "@context": [
+    "https://linkedsoftwaredependencies.org/bundles/npm/@ldf/core/^3.0.0/components/context.jsonld",
+    "https://linkedsoftwaredependencies.org/bundles/npm/@ldf/datasource-sparql/^3.0.0/components/context.jsonld"
+  ],
+  "@id": "npmd:@ldf/datasource-sparql",
+  "components": [
+    {
+      "@id": "ldfds:Datasource/Sparql",
+      "@type": "Class",
+      "extends": "ldfc:Datasource",
+      "requireElement": "datasources.SparqlDatasource",
+      "comment": "A SparqlDatasource provides queryable access to a SPARQL endpoint",
+      "parameters": [
+        {
+          "@id": "ldfds:Datasource/Sparql#endpoint",
+          "comment": "The SPARQL endpoint URL",
+          "range": "xsd:string",
+          "unique": true
+        },
+        {
+          "@id": "ldfds:Datasource/Sparql#forceTypedLiterals",
+          "comment": "If simple literals should be converted into explicitly typed literals with xsd:string when sending a query to the endpoint.",
+          "range": "xsd:boolean",
+          "unique": true,
+          "default": false
+        }
+      ],
+      "constructorArguments": {
+        "extends": "ldfc:Datasource#constructorArgumentsObject",
+        "fields": [
+          {
+            "keyRaw": "endpoint",
+            "value": "ldfds:Datasource/Sparql#endpoint"
+          },
+          {
+            "keyRaw": "forceTypedLiterals",
+            "value": "ldfds:Datasource/Sparql#forceTypedLiterals"
+          }
+        ]
+      }
+    }
+  ]
+}

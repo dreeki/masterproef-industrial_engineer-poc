@@ -1,0 +1,50 @@
+{
+  "@context": "https://linkedsoftwaredependencies.org/bundles/npm/@ldf/server/^3.0.0/components/context.jsonld",
+  "@id": "urn:ldf-server:my",
+  "import": "preset-qpf:config-defaults.json",
+
+  "title": "My Linked Data Fragments server",
+
+  "datasources": [
+    {
+      "@id": "ex:myTurtleDataSource1",
+      "@type": "TurtleDatasource",
+      "datasourceTitle": "MijnTurtleDatasource1",
+      "description": "Dataset met wkt string van het land",
+      "datasourcePath": "land",
+      "file": "https://gist.githubusercontent.com/dreeki/e48bbe533a4b1191045b3652ff2c9c81/raw/ca8f5ed2856a233443a01491959a8197e540d29b/masterproef-demo-land.ttl"
+    },
+    {
+      "@id": "ex:myTurtleDataSource2",
+      "@type": "TurtleDatasource",
+      "datasourceTitle": "MijnTurtleDatasource2",
+      "description": "Dataset met wkt strings van de gewesten",
+      "datasourcePath": "gewest",
+      "file": "https://gist.githubusercontent.com/dreeki/e48bbe533a4b1191045b3652ff2c9c81/raw/ca8f5ed2856a233443a01491959a8197e540d29b/masterproef-demo-gewest.ttl"
+    },
+    {
+      "@id": "ex:myTurtleDataSource3",
+      "@type": "TurtleDatasource",
+      "datasourceTitle": "MijnTurtleDatasource3",
+      "description": "Dataset met wkt strings van de provincies",
+      "datasourcePath": "provincie",
+      "file": "https://gist.githubusercontent.com/dreeki/e48bbe533a4b1191045b3652ff2c9c81/raw/ca8f5ed2856a233443a01491959a8197e540d29b/masterproef-demo-provincie.ttl"
+    },
+    {
+      "@id": "ex:myTurtleDataSource4",
+      "@type": "TurtleDatasource",
+      "datasourceTitle": "MijnTurtleDatasource4",
+      "description": "Dataset met wkt strings van de wegen",
+      "datasourcePath": "weg",
+      "file": "https://gist.githubusercontent.com/dreeki/e48bbe533a4b1191045b3652ff2c9c81/raw/ca8f5ed2856a233443a01491959a8197e540d29b/masterproef-demo-weg.ttl"
+    },
+    {
+      "@id": "ex:myTurtleDataSource5",
+      "@type": "TurtleDatasource",
+      "datasourceTitle": "MijnTurtleDatasource5",
+      "description": "Dataset met wkt strings van de steden",
+      "datasourcePath": "stad",
+      "file": "https://gist.githubusercontent.com/dreeki/e48bbe533a4b1191045b3652ff2c9c81/raw/ca8f5ed2856a233443a01491959a8197e540d29b/masterproef-demo-stad.ttl"
+    }
+  ]
+}
